@@ -6,13 +6,19 @@ If you have 900 PDFs and a question about each of them, that's a spreadsheet inf
 
 ## Quick start
 
-**Claude desktop app or claude.ai** — download `ssi-prompt-guide.skill` from the
-[latest release](../../releases/latest), open it, click **Save skill**. No terminal, no
-git.
+Everything under `skills/` is an [Agent Skill](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) — a `SKILL.md` file plus supporting assets, an emerging open format that more than one AI assistant can load. How you install one depends on your harness, not on which skill it is.
 
-**Claude Code** — `cp -r skills/ssi-prompt-guide ~/.claude/skills/`
+**A harness that loads skills from a folder** (e.g. Claude Code) — copy the skill directory into wherever that harness looks for skills:
 
-**Gemini Gem** — follow [`gems/ssi-prompt-guide/README.md`](gems/ssi-prompt-guide/README.md).
+```bash
+cp -r skills/<skill-name> ~/.claude/skills/
+```
+
+**A harness that installs packaged `.skill` files** (e.g. the Claude desktop app or claude.ai) — download `<skill-name>.skill` from the [latest release](../../releases/latest) and install it there (in Claude's case, open the file and click **Save skill**). No terminal, no git.
+
+**Gemini** — Gemini doesn't support Skills, so we maintain a hand-ported [Gem](https://gemini.google.com/gems) instead. Follow [`gems/README.md`](gems/README.md) to deploy it.
+
+Don't see your harness above? If it can read a `SKILL.md` file or install a `.skill` package, one of the two methods above should work; if it can't do either, the Gemini path is a template for hand-porting to something else.
 
 ## What's here
 
@@ -31,7 +37,7 @@ Turns a reporting question into a prompt you can run over every row in your data
 
 The most common failure scenario for AI tooling is when the AI/model/agent/harness/etc is asked to do too much to fast -- a byproduct of the frictionless experience they promise.
 
-Spreadsheets and their tabular structure require users to think about inputs, action and output. It reintroduces a level of computational thinking useful to wield AI effecitvely, especially for investigative journalism.
+Spreadsheets and their tabular structure require users to think about inputs, action and output. It reintroduces a level of friction useful to wield AI effecitvely, especially for investigative journalism.
 
 This methodology was developed at ProPublica through work with reporters on stories including [Deleting DEI](https://www.propublica.org/article/deleting-dei-language-nonprofits-irs-forms) and [DOJ Declinations](https://www.propublica.org/article/trump-doj-immigration-bondi-declinations-criminal-investigations).
 
