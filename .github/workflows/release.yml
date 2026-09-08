@@ -50,11 +50,4 @@ jobs:
           files: dist/*.skill
           generate_release_notes: true
           body: |
-            ## Install
-
-            **Claude desktop app or claude.ai** — download the `.skill` file below,
-            open it, click **Save skill**.
-
-            **Claude Code** — unzip into `~/.claude/skills/`.
-
-            **Gemini** — see [gems/ssi-prompt-guide/README.md](../blob/main/gems/ssi-prompt-guide/README.md).
+            See [Quick start](https://github.com/propublica/ssi-skills#quick-start) in the README for install steps.
