@@ -28,6 +28,7 @@ Turns a reporting question into a prompt you can run over every row in your data
 
 * [Skill](./skills/ssi-prompt-guide/)
 * [Gem](./gems/ssi-prompt-guide/)
+* [Evals](./skills/ssi-prompt-guide/evals/) — test scenarios, see [Evaluating a skill](#evaluating-a-skill)
 
 ## Also check out: [SSI Toolkit](github.com/propublica/gas-ssi-toolkit)
 
@@ -84,3 +85,20 @@ copied from the skill source with a short, documented set of edits, then pasted
 directly into Gemini's Gem creation UI. There's no automated evaluation for Gems yet,
 so changes are checked by diffing against the skill source and a manual smoke test in
 Preview. See [`gems/ssi-prompt-guide/README.md`](gems/ssi-prompt-guide/README.md).
+
+## Evaluating a skill
+
+This repo doesn't ship its own eval harness.
+
+To check whether a change makes a skill better or worse, workshop it with a
+skill-creator skill — e.g. Anthropic's
+[skill-creator](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator)
+or obra's [superpowers writing-skills](https://github.com/obra/superpowers/tree/main/skills/writing-skills)
+— following the Agent Skills spec's own guide to the process:
+[agentskills.io/skill-creation/evaluating-skills](https://agentskills.io/skill-creation/evaluating-skills).
+
+Each skill in this repo carries its own `evals/evals.json` — the test scenarios
+(`prompt`, `expected_output`, optional `files` and `assertions`) in the format that
+guide describes. That file is what's committed; run results aren't — record a real
+benchmark run in the commit message for the `SKILL.md` change it validates, not in a
+separate file.

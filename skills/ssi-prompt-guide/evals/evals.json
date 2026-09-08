@@ -1,0 +1,115 @@
+{
+  "skill_name": "ssi-prompt-guide",
+  "evals": [
+    {
+      "id": 1,
+      "name": "k9-judgment-call",
+      "prompt": "i've got about 1,200 pdfs of police misconduct complaint files from a records request, all sitting in a drive folder. i need to figure out which ones involve a K9 unit. can you write me a prompt i can run over the rows in my sheet?",
+      "expected_output": "A mental model plus a row-level prompt that scopes the question to a dog actually deployed against a person (not mere mentions of a K9 unit or assignment), routes files with no incident narrative to a defined out-of-scope value instead of guessing, is recall-first about the expensive error direction, and surfaces the deterministic =SEARCH() alternative as a tradeoff rather than silently choosing it. The mental model is reviewed and approved before the prompt is written, and the reporter is handed a test to run themselves.",
+      "assertions": [
+        "Prompt targets incidents where a dog was DEPLOYED against a person, not mere mentions of a K9 unit",
+        "Prompt explicitly handles the near-miss where 'K-9 Unit' appears only as the officer's assignment in the header",
+        "Rows with no incident narrative (disposition letters, fax cover sheets) get a defined out-of-scope value rather than a guessed No",
+        "Asks what words the DOCUMENTS use and accounts for the full variant set (K-9 / K9 / canine / police service dog / PSD)",
+        "Captures the incident date so the reporter can filter to post-2020, and does not substitute a filing or letter date for it",
+        "Establishes which direction of error is expensive and designs recall-first accordingly",
+        "The deterministic =SEARCH() alternative is surfaced as a tradeoff for the reporter to decide, not mandated or ignored",
+        "Solves getting the PDF text into the sheet rather than deflecting it as someone else's problem",
+        "Establishes what tool runs the prompt and what literally arrives in the cell, before the prompt is written",
+        "Asks openly what the reporter already has (existing columns, files, lists) rather than only confirming a specific guess",
+        "Every formula or set of steps handed to the reporter is complete — no placeholder values, unresolved column letters, or 'substitute your own X' notes; missing values were asked for instead",
+        "Does not assert tool-specific spreadsheet behavior it never established by asking; where such behavior matters, it hands the reporter a way to check",
+        "The reasoning behind the prompt is recorded in a durable artifact the reporter reviewed BEFORE the prompt was written",
+        "The mental model is dense and impersonal — declarative lines and tables rather than narrative, no reporter name, no recap of the conversation (length is NOT a criterion; longer than the prompt is fine)",
+        "Hands over a test the reporter runs themselves; no imagined or self-simulated output is presented as a test result"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "alec-gap-check",
+      "prompt": "I have a spreadsheet of 4,000 state legislative bills with the bill text in column C. I want to know which ones are copied from ALEC model legislation, who introduced them, and whether they passed. Can I do all that with one AI prompt per row?",
+      "expected_output": "Recognizes that sponsor and passage status already live in the reporter's own spreadsheet and drops them from the AI prompt entirely, so the row-level question narrows to language matching against the 12 ALEC model bills. Pins 'copied from' to substantially similar language rather than same-topic-different-language, diagnoses and fixes cell truncation across all 4,000 rows (not just the visibly truncated ones), and proposes a cheap deterministic screen so AI judgment is spent only on candidates. Output names which model bill matched, not just yes/no, and a validation plan scaled to publication is offered.",
+      "assertions": [
+        "Discovers that sponsor and passage status already exist in the reporter's own spreadsheet",
+        "Removes sponsor and passage status from the AI prompt entirely",
+        "Establishes a concrete mechanism for getting the 12 ALEC model texts to a per-row prompt",
+        "Pins 'copied from' to substantially similar LANGUAGE and explicitly excludes same-topic-different-language bills",
+        "Handles truncation and diagnoses the cell-size cap as the cause",
+        "Recognizes that eyeballing cell length cannot find text trimmed upstream, so the re-pull must cover all rows rather than the visibly truncated ones",
+        "Output reports WHICH model bill matched, not just a yes/no",
+        "Addresses what the resulting column actually licenses the reporter to claim in print",
+        "Proposes a cheap deterministic screen across all 4,000 rows so AI judgment is spent only on candidates",
+        "Establishes what tool runs the prompt and what literally arrives in the cell, before the prompt is written",
+        "Asks openly what the reporter already has (existing columns, files, lists) rather than only confirming a specific guess",
+        "Every formula or set of steps handed to the reporter is complete — no placeholder values, unresolved column letters, or 'substitute your own X' notes; missing values were asked for instead",
+        "The reasoning behind the prompt is recorded in a durable artifact the reporter reviewed BEFORE the prompt was written",
+        "The mental model is dense and impersonal — declarative lines and tables rather than narrative, no reporter name, no recap of the conversation (length is NOT a criterion; longer than the prompt is fine)",
+        "Provides a validation approach scaled to publication: blind hand-labeled calibration and sampling the negatives"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "me-reports-read-it-off",
+      "prompt": "For each of ~800 scanned county death investigation reports (drive links in col A), I need decedent name, age, date of death, and manner of death broken into separate columns. I've looked at maybe 30 of them — layout's consistent but roughly 1 in 10 are handwritten and the age field is sometimes 'Y/M/D'. Prompt please.",
+      "expected_output": "Surfaces the underlying reporting goal (finding infant deaths under one year old) rather than treating the four fields as an end in themselves. Age is extracted verbatim, never computed or judged by the model. Handles two form versions by matching printed field labels rather than page position, enumerates manner of death to exactly the form's six permitted values while distinguishing a genuinely blank field (case still open) from illegible and from not-on-form, and separates date of death from date filed/found using the printed label. Accounts for the pre-2015 handwritten forms where manner is circled rather than checked.",
+      "assertions": [
+        "Surfaces that the underlying reporting goal is finding infant deaths under one year old",
+        "Age is extracted verbatim; the model is never asked to compute or judge age",
+        "Surfaces the two form versions and instructs matching by printed label rather than page position",
+        "Manner of death is enumerated to exactly the six permitted values on the form",
+        "A genuinely blank manner-of-death (case still open) is distinguished from illegible and from not-on-form",
+        "Date of death is explicitly distinguished from date filed and date found, using the label as printed",
+        "Handles the pre-2015 handwritten forms where manner is circled rather than checked",
+        "Does not re-ask anything the reporter already stated, and does not re-offer advice she has already given",
+        "Establishes what tool runs the prompt and what literally arrives in the cell, before the prompt is written",
+        "Does not assert tool-specific spreadsheet behavior it never established by asking; where such behavior matters, it hands the reporter a way to check",
+        "The reasoning behind the prompt is recorded in a durable artifact the reporter reviewed BEFORE the prompt was written",
+        "The mental model is dense and impersonal — declarative lines and tables rather than narrative, no reporter name, no recap of the conversation (length is NOT a criterion; longer than the prompt is fine)",
+        "Hands over a test the reporter runs themselves; no imagined or self-simulated output is presented as a test result"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "foia-not-yet-a-spreadsheet",
+      "prompt": "someone told me i should be using AI on this FOIA dump but i honestly don't really know what that means. i've got like 3,000 emails from a state agency and i'm trying to figure out if they were talking to lobbyists about the pipeline permit.",
+      "expected_output": "Discovers that the '3,000 emails' are actually a single ~4,000-page PDF and no spreadsheet exists yet, and treats getting to a spreadsheet — including naming who or what does the splitting — as a prerequisite to any AI prompt rather than assuming a sheet is already in hand. Resolves the reporter's 8-firm lobbyist list into something a per-row prompt can actually screen on, or explains why it's too narrow and supplies a better screen. Handles the permit's aliasing problem (rarely called by its formal number) and the forwarded-news-article near-miss, and stays free of unexplained jargon for a self-described non-technical reporter.",
+      "assertions": [
+        "Discovers the '3,000 emails' are a single 4,000-page PDF and that no spreadsheet exists yet",
+        "Addresses getting to a spreadsheet as a prerequisite, and names who or what will actually do the splitting",
+        "Resolves the 8-firm list: either collects the names and puts them somewhere usable, OR explains why the list is too narrow to screen on and supplies a better screen the reporter can run",
+        "Handles the aliasing problem: the permit is almost never called by its number, but 'Big Muddy Crossing' or 'the crossing'",
+        "Handles the forwarded-news-article near-miss so it isn't counted as lobbyist contact",
+        "Uses no unexplained jargon with a self-described non-technical reporter, and adapts when he says he is lost",
+        "Establishes what will run the prompt over thousands of rows — not just how the spreadsheet gets built",
+        "Every formula or set of steps handed to the reporter is complete — no placeholder values, unresolved column letters, or 'substitute your own X' notes; missing values were asked for instead",
+        "The reasoning behind the prompt is recorded in a durable artifact the reporter reviewed BEFORE the prompt was written",
+        "The mental model is dense and impersonal — declarative lines and tables rather than narrative, no reporter name, no recap of the conversation (length is NOT a criterion; longer than the prompt is fine)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "medboard-go-find-out",
+      "prompt": "I've got a spreadsheet of about 600 physicians who billed Medicare for a procedure we're looking into — name, city, and NPI number in columns A through C. I want to know which ones have been disciplined by a state medical board. Can I do that with a prompt over each row?",
+      "expected_output": "Keeps 'nothing found' distinct from 'no discipline exists,' addresses name disambiguation with a stated confidence level, and pins discipline to patient-harm / standard-of-care actions while excluding administrative ones. Accounts for multi-state licensure (one board's silence says nothing about other states), requires a citable source for any positive finding, and applies a ten-year window. Rather than assuming per-row web search is the only path, actually checks for a bulk dataset or API (e.g. a federal exclusion list) that answers part of the question deterministically, and reckons with per-query search cost across 600 rows.",
+      "assertions": [
+        "Preserves 'nothing found' as distinct from 'no discipline exists' rather than collapsing both into a negative",
+        "Addresses name disambiguation and records how confident the identity match is",
+        "Pins the definition to patient-harm / standard-of-care discipline and excludes administrative actions",
+        "Addresses multi-state licensure — that one board's silence says nothing about other states",
+        "Requires a citable source (URL or named board document) for any positive finding",
+        "Constrains the search procedure: which sources count, and what to do at a dead end",
+        "Applies the ten-year window",
+        "Designs recall-first, treating hits as leads the reporter will confirm rather than publishable facts",
+        "Leaves the conversation to check a real source rather than designing the retrieval procedure from assumption — actually runs a lookup, finds a bulk dataset or API, or establishes a published base rate",
+        "Identifies at least one complete dataset (e.g. a federal exclusion list or bulk download) that answers part of the question deterministically instead of by per-row search",
+        "Reckons with per-query search cost across 600 rows, and uses the four states already scraped",
+        "Establishes what tool runs the prompt and what literally arrives in the cell, before the prompt is written",
+        "Asks openly what the reporter already has (existing columns, files, lists) rather than only confirming a specific guess",
+        "Every formula or set of steps handed to the reporter is complete — no placeholder values, unresolved column letters, or 'substitute your own X' notes; missing values were asked for instead",
+        "The reasoning behind the prompt is recorded in a durable artifact the reporter reviewed BEFORE the prompt was written",
+        "The mental model is dense and impersonal — declarative lines and tables rather than narrative, no reporter name, no recap of the conversation (length is NOT a criterion; longer than the prompt is fine)",
+        "Hands over a test the reporter runs themselves; no imagined or self-simulated output is presented as a test result"
+      ]
+    }
+  ]
+}
