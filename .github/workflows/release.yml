@@ -1,0 +1,60 @@
+name: Release
+
+# Tag a commit to cut a release:
+#
+#   git tag v1.0.0 && git push origin v1.0.0
+#
+# This builds a .skill file for every skill under skills/ and attaches them to
+# a GitHub release, so the "latest release" download link in the READMEs always
+# points at a package built from the tagged source. Nothing is committed to the
+# repo, which keeps zip churn out of git history.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .skill packages
+        run: |
+          chmod +x ./build.sh
+          ./build.sh
+          ls -la dist/
+
+      # The build script already refuses to package a skill whose frontmatter
+      # name and directory name disagree, so a mismatch fails the release
+      # rather than shipping a skill that silently won't load.
+      - name: Verify packages are non-empty
+        run: |
+          shopt -s nullglob
+          files=(dist/*.skill)
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "no .skill files were produced" >&2
+            exit 1
+          fi
+          for f in "${files[@]}"; do
+            unzip -l "$f" | grep -q 'SKILL.md' || { echo "$f has no SKILL.md" >&2; exit 1; }
+          done
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.skill
+          generate_release_notes: true
+          body: |
+            ## Install
+
+            **Claude desktop app or claude.ai** — download the `.skill` file below,
+            open it, click **Save skill**.
+
+            **Claude Code** — unzip into `~/.claude/skills/`.
+
+            **Gemini** — see [gems/ssi-prompt-guide/README.md](../blob/main/gems/ssi-prompt-guide/README.md).

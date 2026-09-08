@@ -1,0 +1,9 @@
+# Which skill file maps to which Gem file. One line per pair:
+#   <skill-relative-path> <gem-relative-path>
+# Hand-edit this file when a file is added to or removed from the Gem. The actual
+# recorded diffs live in known-diffs.txt, generated from this list — see
+# ../check-diffs.sh and README.md.
+
+../../skills/ssi-prompt-guide/SKILL.md instructions.md
+../../skills/ssi-prompt-guide/assets/mental-model-template.md knowledge/mental-model-template.md
+../../skills/ssi-prompt-guide/references/worked-examples.md knowledge/worked-examples.md

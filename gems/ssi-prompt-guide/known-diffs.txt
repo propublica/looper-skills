@@ -1,0 +1,67 @@
+PAIR ../../skills/ssi-prompt-guide/SKILL.md instructions.md
+--- skill:../../skills/ssi-prompt-guide/SKILL.md
++++ gem:instructions.md
+@@ -1,8 +1,3 @@
+----
+-name: ssi-prompt-guide
+-description: "Write a Spreadsheet Inference (SSI) prompt — one that runs over every row of a spreadsheet — plus a written mental model recording the reasoning behind it. Use whenever someone wants to apply AI to a pile of documents, records, links, names, images, or files by working through them row by row, and whenever they mention SSI, the SSI Toolkit, or spreadsheet inference by name. Triggers include 'write me a prompt for my sheet', 'run this over 1,200 PDFs', 'classify each of these', 'extract these fields from every form', 'tag every row', and 'I have a folder of files and I need to find the ones that...'. Also use it when someone describes an AI-shaped problem over a large collection and hasn't yet realized it's a spreadsheet job. Do NOT write the prompt on the spot — this skill exists to interview them first."
+----
+-
+ # Spreadsheet Inference Prompts
+ 
+ Help a reporter turn a reporting question into a prompt that runs once per row of a
+@@ -102,7 +97,7 @@
+ 
+ **Try to see the actual document.** A reporter describing a form and a reporter
+ showing you the form are different amounts of information — the extraction example in
+-`references/worked-examples.md`, with its "underneath and to the left of the main
++the attached Worked Examples file, with its "underneath and to the left of the main
+ title," could only be written with the document open.
+ 
+ Often the channel can't carry a file. Don't just accept that and write a
+@@ -244,7 +239,7 @@
+ - **Is any field a literal string match?** That's `=SEARCH()` or `=FIND()` — exact,
+   free, auditable.
+ - **Is any field derivable from other fields?** Extract the components, compute in the
+-  sheet. The medical examiner prompt in `references/worked-examples.md` is the model:
++  sheet. The medical examiner prompt in the attached Worked Examples file is the model:
+   the goal is finding decedents under 18, and the prompt extracts `age` and
+   `birthDate` verbatim rather than judging age. The arithmetic happens where it's
+   deterministic and checkable.
+@@ -381,8 +376,9 @@
+ 
+ ## Write the mental model, then stop
+ 
+-Write to `mental-model-<slug>.md` using `assets/mental-model-template.md`, keeping the
+-section headings stable so the document can be picked up and read later.
++Render the mental model in the chat as a copyable markdown block, following the
++attached Mental Model Template, keeping the section headings stable so the document
++can be picked up and read later.
+ 
+ **Put in what the prompt can't carry, and don't pad it with what the prompt already
+ says.** The definition, the near-miss, the rulings, what was considered and rejected
+@@ -419,7 +415,7 @@
+ 
+ ## Write the prompt
+ 
+-Read `references/worked-examples.md` before you start if you haven't already. It holds
++Read the attached Worked Examples file before you start if you haven't already. It holds
+ two real prompts at opposite ends of the length range, annotated with why each is
+ shaped the way it is — the fastest way to calibrate how much prompt this job actually
+ needs.
+@@ -534,6 +530,6 @@
+ 
+ ## Reference files
+ 
+-- `references/worked-examples.md` — two real prompts with annotations on why each is
++- Worked Examples (attached) — two real prompts with annotations on why each is
+   shaped the way it is. Read when you need a model for prompt structure or length.
+-- `assets/mental-model-template.md` — the document to fill in.
++- Mental Model Template (attached) — the document to fill in.
+
+PAIR ../../skills/ssi-prompt-guide/assets/mental-model-template.md knowledge/mental-model-template.md
+(no differences)
+
+PAIR ../../skills/ssi-prompt-guide/references/worked-examples.md knowledge/worked-examples.md
+(no differences)
+
