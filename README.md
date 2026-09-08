@@ -1,7 +1,5 @@
 # SSI Skills
 
-[![Release](https://github.com/propublica/ssi-skills/actions/workflows/release.yml/badge.svg)](https://github.com/propublica/ssi-skills/actions/workflows/release.yml)
-[![Check Gem diffs](https://github.com/propublica/ssi-skills/actions/workflows/check-gem-diffs.yml/badge.svg)](https://github.com/propublica/ssi-skills/actions/workflows/check-gem-diffs.yml)
 [![Latest release](https://img.shields.io/github/v/release/propublica/ssi-skills?label=latest%20release)](https://github.com/propublica/ssi-skills/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
