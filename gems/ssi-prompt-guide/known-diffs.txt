@@ -49,7 +49,7 @@ PAIR ../../skills/ssi-prompt-guide/SKILL.md instructions.md
  two real prompts at opposite ends of the length range, annotated with why each is
  shaped the way it is — the fastest way to calibrate how much prompt this job actually
  needs.
-@@ -534,6 +530,6 @@
+@@ -539,6 +535,6 @@
  
  ## Reference files
  

@@ -1,0 +1,8 @@
+# Require a maintainer review on paths that affect the CI trust boundary --
+# what runs unreviewed on a pull_request, or what a release workflow does
+# with its write-scoped token. This file only takes effect once "Require
+# review from Code Owners" is enabled in this repo's branch protection
+# settings for main.
+/.github/               @aaronbrezel
+/build.sh                @aaronbrezel
+/gems/check-diffs.sh     @aaronbrezel

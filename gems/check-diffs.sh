@@ -42,18 +42,38 @@ fi
 # same format known-diffs.txt is written in, so a check is just a text comparison.
 render_pair() {
   local skill_rel="$1" gem_rel="$2" gem_dir="$3"
-  local skill_abs="$gem_dir/$skill_rel"
-  local gem_abs="$gem_dir/$gem_rel"
+  local skills_root gem_dir_real skill_abs gem_abs
   local diff_out
 
-  if [[ ! -f "$skill_abs" ]]; then
-    echo "error: skill file not found: $skill_abs (from $gem_dir/diff-pairs.txt)" >&2
+  # diff-pairs.txt is attacker-editable pre-merge (any PR touching gems/**
+  # runs this script in CI). Every legitimate entry points skill_rel into
+  # skills/ and gem_rel into this gem's own directory, so resolve symlinks/
+  # '..' with realpath and enforce exactly that, instead of trusting the raw
+  # concatenation — otherwise a crafted entry like "../../.git/config" would
+  # still resolve inside the repo (just not inside skills/) and let `diff`
+  # read and print an arbitrary file (e.g. a token left in .git/config by
+  # actions/checkout) to the (public) CI log.
+  skills_root="$(realpath "$HERE/../skills")"
+  gem_dir_real="$(realpath "$gem_dir")"
+
+  if [[ ! -f "$gem_dir/$skill_rel" ]]; then
+    echo "error: skill file not found: $gem_dir/$skill_rel (from $gem_dir/diff-pairs.txt)" >&2
     return 1
   fi
-  if [[ ! -f "$gem_abs" ]]; then
-    echo "error: gem file not found: $gem_abs (from $gem_dir/diff-pairs.txt)" >&2
+  if [[ ! -f "$gem_dir/$gem_rel" ]]; then
+    echo "error: gem file not found: $gem_dir/$gem_rel (from $gem_dir/diff-pairs.txt)" >&2
     return 1
   fi
+  skill_abs="$(realpath "$gem_dir/$skill_rel")"
+  gem_abs="$(realpath "$gem_dir/$gem_rel")"
+  case "$skill_abs" in
+    "$skills_root"/*) ;;
+    *) echo "error: skill path '$skill_rel' must resolve inside skills/ (from $gem_dir/diff-pairs.txt)" >&2; return 1 ;;
+  esac
+  case "$gem_abs" in
+    "$gem_dir_real"/*) ;;
+    *) echo "error: gem path '$gem_rel' must resolve inside $gem_dir (from $gem_dir/diff-pairs.txt)" >&2; return 1 ;;
+  esac
 
   echo "PAIR $skill_rel $gem_rel"
   if diff_out="$(diff -u --label "skill:$skill_rel" --label "gem:$gem_rel" "$skill_abs" "$gem_abs")"; then
