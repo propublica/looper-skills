@@ -7,10 +7,13 @@
 #   ./gems/check-diffs.sh --record               regenerate known-diffs.txt for every gem
 #   ./gems/check-diffs.sh --record <gem-name>    regenerate known-diffs.txt for one gem
 #
-# Each gem directory holds two flat files:
+# Every directory under gems/ is treated as a gem and must hold two flat files:
 #   diff-pairs.txt   hand-edited — which skill file maps to which Gem file
 #   known-diffs.txt  script-generated — the exact `diff -u` output for each pair (or
 #                     "(no differences)"), recorded the last time someone ran --record
+#
+# A gem directory with no diff-pairs.txt is a hard error, not a skip — a new gem
+# that forgets to add one would otherwise pass an unchecked "ok" silently.
 #
 # Nothing is preprocessed before diffing. Each pair is compared exactly as the two
 # files sit on disk, so everything — including structural differences like a stripped
@@ -128,7 +131,6 @@ if [[ $# -gt 0 ]]; then
   done
 else
   for d in "$HERE"/*/; do
-    [[ -f "$d/diff-pairs.txt" ]] || continue
     targets+=("${d%/}")
   done
 fi

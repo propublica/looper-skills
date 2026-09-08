@@ -1,0 +1,26 @@
+name: Check Gem diffs
+
+# Runs gems/check-diffs.sh on every push and PR that touches a skill or a Gem,
+# so undocumented drift between a skill and its Gem port is caught in CI
+# instead of at the next manual review. See gems/README.md, "Evaluating a Gem".
+on:
+  push:
+    paths:
+      - 'skills/**'
+      - 'gems/**'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'gems/**'
+  workflow_dispatch:
+
+jobs:
+  check-diffs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run check-diffs.sh
+        run: |
+          chmod +x ./gems/check-diffs.sh
+          ./gems/check-diffs.sh

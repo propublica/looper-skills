@@ -48,7 +48,10 @@ knowledge files directly.
 5. Write `gems/<skill-name>/diff-pairs.txt`, pairing every file from steps 2–3 to its
    skill source (format documented at the top of
    [`check-diffs.sh`](check-diffs.sh)), then run
-   `./gems/check-diffs.sh --record <skill-name>` to record the baseline.
+   `./gems/check-diffs.sh --record <skill-name>` to record the baseline. **Required:**
+   `check-diffs.sh` treats every directory under `gems/` as a gem, and a gem with no
+   `diff-pairs.txt` fails the whole check — including in CI — rather than being
+   skipped, so do this step before opening a PR.
 6. Follow "Creating or updating a Gem" above to create it in Gemini.
 7. Add a row for it under "Gems in this repo" below.
 
@@ -87,9 +90,13 @@ checklist. These are still just text to a Gem; they don't need translation.
 
 ## Evaluating a Gem
 
-Gems have no automated testing harness. Verification is two checks, run by a
-maintainer: [`check-diffs.sh`](check-diffs.sh) against the source skill, and a manual
-smoke test in Preview (see that Gem's README).
+Gems have no automated testing harness. Verification is two checks: `check-diffs.sh`
+against the source skill, run in CI on every push/PR touching `skills/` or `gems/`
+(see [`.github/workflows/check-gem-diffs.yml`](../.github/workflows/check-gem-diffs.yml)),
+and a manual smoke test in Preview, run by a maintainer (see that Gem's README).
+Every directory under `gems/` is required to have a `diff-pairs.txt` — one without it
+fails the check outright instead of being skipped, so a new gem can't slip past CI
+unchecked.
 
 **After any change to a skill or Gem file:**
 
