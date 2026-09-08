@@ -16,7 +16,7 @@ cp -r skills/<skill-name> ~/.claude/skills/
 
 **A harness that installs packaged `.skill` files** (e.g. the Claude desktop app or claude.ai) — download `<skill-name>.skill` from the [latest release](../../releases/latest) and install it there (in Claude's case, open the file and click **Save skill**). No terminal, no git.
 
-**Gemini** — Gemini doesn't support Skills, so we maintain a hand-ported [Gem](https://gemini.google.com/gems) instead. Follow [`gems/README.md`](gems/README.md) to deploy it.
+**Gemini Web App** — Gemini doesn't support Skills, so we maintain a hand-ported [Gem](https://gemini.google.com/gems) instead. Follow [`gems/README.md`](gems/README.md) to deploy it.
 
 Don't see your harness above? If it can read a `SKILL.md` file or install a `.skill` package, one of the two methods above should work; if it can't do either, the Gemini path is a template for hand-porting to something else.
 
