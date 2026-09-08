@@ -16,10 +16,12 @@ git.
 
 ## What's here
 
-### `skills/ssi-prompt-guide/`
+### SSI Prompt Guide
 
 Turns a reporting question into a prompt you can run over every row in your dataset, plus a written **mental model** recording the definition you're applying, the edge cases, and the decisions behind it.
 
+* [Skill](./skills/ssi-prompt-guide/)
+* [Gem](./gems/ssi-prompt-guide/)
 
 ## Also check out: [SSI Toolkit](github.com/propublica/gas-ssi-toolkit)
 
