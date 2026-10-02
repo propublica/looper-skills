@@ -1,12 +1,12 @@
-# SSI Prompt Guide — Gemini Gem
+# Looper Prompt Guide — Gemini Gem
 
-Adapted from `skills/ssi-prompt-guide/`. See [`../README.md`](../README.md) for the
+Adapted from `skills/looper-prompt-guide/`. See [`../README.md`](../README.md) for the
 general conversion process, principles, and verification approach this follows — this
 file covers only what's specific to this Gem.
 
 ## Gem configuration
 
-- **Name:** `SSI Prompt Guide`
+- **Name:** `Looper Prompt Guide`
 - **Description:**
   > A gem to help you craft precise prompts for your Spreadsheet Inference needs
 - **Instructions:** full contents of [`instructions.md`](instructions.md)
@@ -20,12 +20,12 @@ Tracked and verified by [`../check-diffs.sh`](../check-diffs.sh) (see
 `../README.md`, "Evaluating a Gem," for how it works):
 
 ```bash
-./gems/check-diffs.sh ssi-prompt-guide
+./gems/check-diffs.sh looper-prompt-guide
 ```
 
 If any of the source files changes, this will report `DRIFT DETECTED` with a
 diff of what moved. Review it, if it represents a new intentional
-edit, run `./gems/check-diffs.sh --record ssi-prompt-guide` to bring
+edit, run `./gems/check-diffs.sh --record looper-prompt-guide` to bring
 `known-diffs.txt` back in sync.
 
 ## Manual smoke test

@@ -4,6 +4,6 @@
 # recorded diffs live in known-diffs.txt, generated from this list — see
 # ../check-diffs.sh and README.md.
 
-../../skills/ssi-prompt-guide/SKILL.md instructions.md
-../../skills/ssi-prompt-guide/assets/mental-model-template.md knowledge/mental-model-template.md
-../../skills/ssi-prompt-guide/references/worked-examples.md knowledge/worked-examples.md
+../../skills/looper-prompt-guide/SKILL.md instructions.md
+../../skills/looper-prompt-guide/assets/mental-model-template.md knowledge/mental-model-template.md
+../../skills/looper-prompt-guide/references/worked-examples.md knowledge/worked-examples.md

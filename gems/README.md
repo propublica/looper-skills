@@ -1,4 +1,4 @@
-# SSI Gems
+# Looper Gems
 
 For organizations with limited Engineering/IT support, [Gemini Gems](https://gemini.google.com/gems)
 represent an easier path to custom AI Skills than the Skills format the rest of
@@ -31,7 +31,7 @@ Gems should first be created as Skills, a more durable, more widely interoperabl
    `skills/<skill-name>/references/` into `gems/<skill-name>/knowledge/`, applying the
    same edits where needed — most files need none.
 4. Write `gems/<skill-name>/README.md` — use
-   [`ssi-prompt-guide/README.md`](ssi-prompt-guide/README.md) as a template: Gem
+   [`looper-prompt-guide/README.md`](looper-prompt-guide/README.md) as a template: Gem
    configuration, a "Track changes" pointer to `check-diffs.sh`, and a manual smoke
    test.
 5. Write `gems/<skill-name>/diff-pairs.txt`, pairing every file from steps 2–3 to its
@@ -97,5 +97,5 @@ checklist. These are still just text to a Gem; they don't need translation.
 
 ## Gems in this repo
 
-- [`ssi-prompt-guide/`](ssi-prompt-guide/README.md) — adapted from
-  `skills/ssi-prompt-guide/`.
+- [`looper-prompt-guide/`](looper-prompt-guide/README.md) — adapted from
+  `skills/looper-prompt-guide/`.
