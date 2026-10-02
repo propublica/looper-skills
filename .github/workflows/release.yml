@@ -50,4 +50,4 @@ jobs:
           files: dist/*.skill
           generate_release_notes: true
           body: |
-            See [Quick start](https://github.com/propublica/ssi-skills#quick-start) in the README for install steps.
+            See [Quick start](https://github.com/propublica/looper-skills#quick-start) in the README for install steps.

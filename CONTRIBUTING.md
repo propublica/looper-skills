@@ -6,7 +6,7 @@ agent-oriented form.
 ## Proposing a new skill
 
 Open an issue or PR describing the reporting task the skill would handle and how it's
-distinct from `ssi-prompt-guide`. A new skill lives in its own directory under
+distinct from `looper-prompt-guide`. A new skill lives in its own directory under
 `skills/<skill-name>/` with a `SKILL.md`, an `evals/evals.json` (see
 [Evaluating a skill](#evaluating-a-skill) below), and — if it's meant to reach Gemini
 users too — a hand-ported Gem under `gems/<skill-name>/` following the pattern in
@@ -32,7 +32,7 @@ To build locally without releasing:
 
 ```bash
 ./build.sh                    # every skill, into dist/
-./build.sh ssi-prompt-guide   # just one
+./build.sh looper-prompt-guide   # just one
 ```
 
 `build.sh` refuses to package a skill whose directory name and `name:` frontmatter

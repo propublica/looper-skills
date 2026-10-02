@@ -1,6 +1,6 @@
-# SSI Skills
+# Looper Skills
 
-[![Latest release](https://img.shields.io/github/v/release/propublica/ssi-skills?label=latest%20release)](https://github.com/propublica/ssi-skills/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/propublica/looper-skills?label=latest%20release)](https://github.com/propublica/looper-skills/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 AI skills for **spreadsheet inference** — running one prompt/AI trigger, once per row, across a pile of documents, records, links or files.
@@ -25,17 +25,17 @@ Don't see your harness above? If it can read a `SKILL.md` file or install a `.sk
 
 ## What's here
 
-### SSI Prompt Guide
+### Looper Prompt Guide
 
 Turns a reporting question into a prompt you can run over every row in your dataset, plus a written **mental model** recording the definition you're applying, the edge cases, and the decisions behind it.
 
-* [Skill](./skills/ssi-prompt-guide/)
-* [Gem](./gems/ssi-prompt-guide/)
-* [Evals](./skills/ssi-prompt-guide/evals/) — test scenarios, see [Evaluating a skill](CONTRIBUTING.md#evaluating-a-skill)
+* [Skill](./skills/looper-prompt-guide/)
+* [Gem](./gems/looper-prompt-guide/)
+* [Evals](./skills/looper-prompt-guide/evals/) — test scenarios, see [Evaluating a skill](CONTRIBUTING.md#evaluating-a-skill)
 
-## Also check out: [SSI Toolkit](github.com/propublica/gas-ssi-toolkit)
+## Also check out: [Looper](https://github.com/propublica/gas-looper)
 
-[**SSI Toolkit**](https://github.com/propublica/gas-ssi-toolkit) is a Google Sheets add-on built for spreadsheet inference. While you can use SSI prompts with any AI assistant, it's the companion tool we recommend, and it's what these skills were developed to support.
+[**Looper**](https://github.com/propublica/gas-looper) (formerly the SSI Toolkit) is a Google Sheets add-on built for spreadsheet inference. While you can use spreadsheet inference prompts with any AI assistant, it's the companion tool we recommend, and it's what these skills were developed to support.
 
 ## Why spreadsheets?
 

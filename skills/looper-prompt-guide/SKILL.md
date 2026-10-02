@@ -1,6 +1,6 @@
 ---
-name: ssi-prompt-guide
-description: "Write a Spreadsheet Inference (SSI) prompt — one that runs over every row of a spreadsheet — plus a written mental model recording the reasoning behind it. Use whenever someone wants to apply AI to a pile of documents, records, links, names, images, or files by working through them row by row, and whenever they mention SSI, the SSI Toolkit, or spreadsheet inference by name. Triggers include 'write me a prompt for my sheet', 'run this over 1,200 PDFs', 'classify each of these', 'extract these fields from every form', 'tag every row', and 'I have a folder of files and I need to find the ones that...'. Also use it when someone describes an AI-shaped problem over a large collection and hasn't yet realized it's a spreadsheet job. Do NOT write the prompt on the spot — this skill exists to interview them first."
+name: looper-prompt-guide
+description: "Write a Spreadsheet Inference (SSI) prompt — one that runs over every row of a spreadsheet — plus a written mental model recording the reasoning behind it. Use whenever someone wants to apply AI to a pile of documents, records, links, names, images, or files by working through them row by row, and whenever they mention Looper or spreadsheet inference by name. Triggers include 'write me a prompt for my sheet', 'run this over 1,200 PDFs', 'classify each of these', 'extract these fields from every form', 'tag every row', and 'I have a folder of files and I need to find the ones that...'. Also use it when someone describes an AI-shaped problem over a large collection and hasn't yet realized it's a spreadsheet job. Do NOT write the prompt on the spot — this skill exists to interview them first."
 ---
 
 # Spreadsheet Inference Prompts
